@@ -34,7 +34,6 @@ angular.module('app.directives',[]).directive("zkxfiltericon",[function(){
 }])
 .directive("zkxinput",['$compile',function($compile){
 	function getstr(type,source){
-		console.log(type);
 		if(type=="select")
 			return "<select ng-model='opv3' ng-init='opv3=source[0]' ng-options='v for v in source'></select>";
 		else return "<input ng-model='opinput' />";
@@ -46,8 +45,8 @@ angular.module('app.directives',[]).directive("zkxfiltericon",[function(){
 			type:"=",
 			source:"=",
 			enumtype:"=",
-			enumkey:"=",
-			enumval:"=",
+			enumkey:"=", // if enum is object array, tell me which field to be the label
+			enumval:"=", // and which field is the selected value
 			opv3:"=myvalue"
 		},
 		link:function(scope,element,attrs){
