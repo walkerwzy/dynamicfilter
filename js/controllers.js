@@ -41,6 +41,15 @@ angular.module("app.controllers",[]).controller('ctrls',['$scope',function($scop
 			enumkey:'key',
 			enumval:'val',
 			datasource:[{key:'key1',val:'val1'},{key:'key2',val:'val2'},{key:'key3',val:'val3'}]
+		},
+		{
+			fieldname:'enum field from remote',
+			field:'fdenum3',
+			fieldtype:fieldType.enum,
+			enumtype:'obj',
+			enumkey:'column1',
+			enumval:'id',
+			datasource:"/data.json"
 		}
     ];
     $scope.fuse=[];

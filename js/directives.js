@@ -32,12 +32,7 @@ angular.module('app.directives',[]).directive("zkxfiltericon",[function(){
 		templateUrl:'/js/templates/zkxfilterbox.html'
 	};
 }])
-.directive("zkxinput",['$compile',function($compile){
-	function getstr(type,source){
-		if(type=="select")
-			return "<select ng-model='opv3' ng-init='opv3=source[0]' ng-options='v for v in source'></select>";
-		else return "<input ng-model='opinput' />";
-	}
+.directive("zkxinput",['$compile','$http',function($compile,$http){
 	return {
 		restrict:'EA',
 		transclude:true,
@@ -50,11 +45,25 @@ angular.module('app.directives',[]).directive("zkxfiltericon",[function(){
 			opv3:"=myvalue"
 		},
 		link:function(scope,element,attrs){
-			if(scope.type.name=="enum"){
+			var genhtml = function(){
 				if(scope.enumtype=="str")
-					element.html("<select ng-model='opv3' ng-init='opv3=source[0]' ng-options='v for v in source'></select>");
+					element.html("<select ng-model='opv3' ng-init='opv3=source[0]' " + 
+						"ng-options='v for v in source'></select>");
 				else
-					element.html("<select ng-model='opv3' ng-init='opv3=source[0][enumkey]' ng-options='v[enumkey] as v[enumval] for v in source'></select>");
+					element.html("<select ng-model='opv3' ng-init='opv3=source[0][enumval]' " + 
+						"ng-options='v[enumval] as v[enumkey] for v in source'></select>");
+			};
+			if(scope.type.name=="enum"){
+				if(typeof scope.source === 'object') genhtml();
+				else{
+					$http.get('/data.json')
+						.success(function(data){
+							scope.source=data;
+							genhtml();
+							$compile(element.contents())(scope);
+							return;
+						});
+				};
 			}else{
 				element.html("<input ng-model='opv3' />");
 			};
