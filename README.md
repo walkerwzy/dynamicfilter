@@ -3,12 +3,14 @@ dynamicfilter
 
 a angular directive that can dynamic add/remove filter to q search query
 
+---
 - define some modles can participate in construct a search query
 - include `fieldid`, `fieldname`, `fieldtype`, `operator` and `datasource`
 - different fieldtype can have different input element, e.g. enum type have a select element
 - some element can have remote datasource [`todo`]
 - every condition has 3 properities which stored in 3 hidden elements, backend request the form data to group these properities, then compose them as query to database
 
+---
 ## How to Use
 ### set query models
     //your query models
@@ -30,3 +32,7 @@ a angular directive that can dynamic add/remove filter to q search query
     <zkxfiltericon data="fall" out="fuse"></zkxfiltericon>
 ### gen result fields
     <zkxfilterbox data="fall" out="fuse"></zkxfilterbox>
+
+---
+###License
+© 2014 GPL license
