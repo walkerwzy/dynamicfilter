@@ -32,6 +32,8 @@ a angular directive that can dynamic add/remove filter to q search query
     <zkxfiltericon data="fall" out="fuse"></zkxfiltericon>
 ### gen result fields
     <zkxfilterbox data="fall" out="fuse"></zkxfilterbox>
+### run a web server
+because the demo use absolutely url `/root/to/file`, so deploy a web server to run.
 
 ---
 ###License
