@@ -1,0 +1,9 @@
+<div ng-repeat="d in out">
+	{{d.fieldname}}:&nbsp;
+	<select ng-model="opv" ng-init="opv=d.fieldtype.op[0].val" ng-options="v.val as v.key for v in d.fieldtype.op"></select>
+	<zkxinput type="d.fieldtype" source="d.datasource" enumtype="d.enumtype" enumkey="d.enumkey" enumval="d.enumval" myvalue="opv2"></zkxinput>
+	<span style="cursor:pointer;font-family:sans-serif;font-size:10px; margin-left:10px; color:gray;" ng-click="remove($index)">X</span>
+	<input type="hidden" name="q_field" value="{{d.field}}" />
+	<input type="hidden" name="q_field_op" value="{{opv}}" />
+	<input type="hidden" name="q_field_value" value="{{opv2}}" />
+</div>
