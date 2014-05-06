@@ -50,6 +50,11 @@ angular.module("app.controllers",[]).controller('ctrls',['$scope',function($scop
 			enumkey:'column1',
 			enumval:'id',
 			datasource:"/data.json"
+		},
+		{
+			fieldname:"date field",
+			field:"fdate",
+			fieldtype:fieldType.date
 		}
     ];
     $scope.fuse=[];

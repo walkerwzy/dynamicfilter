@@ -32,7 +32,7 @@ angular.module('app.directives',[]).directive("zkxfiltericon",[function(){
 		templateUrl:'/js/templates/zkxfilterbox.html'
 	};
 }])
-.directive("zkxinput",['$compile','$http',function($compile,$http){
+.directive("zkxinput",['$compile','$http','$timeout',function($compile,$http,$timeout){
 	return {
 		restrict:'EA',
 		transclude:true,
@@ -68,6 +68,14 @@ angular.module('app.directives',[]).directive("zkxfiltericon",[function(){
 				element.html("<input ng-model='opv3' />");
 			};
 			$compile(element.contents())(scope);
+			if(scope.type.name=="date"){
+				element.datebox();
+				// because easyui use it's own hidden field to store value,
+				// we remove pre-set hidden field and use easyui's hidden field
+				var p = angular.element(element);
+				p.nextAll(":hidden").filter("[name='q_field_value']").remove();
+				p.nextAll(".datebox").find(":hidden").attr("name","q_field_value");
+			}
 		}
 	};
 }]);
