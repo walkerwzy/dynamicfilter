@@ -1,7 +1,7 @@
 dynamicfilter
 =============
 
-a angular directive that can dynamic add/remove filter to q search query
+a angular directive that can dynamic add/remove filter conditions 
 
 ---
 - define some modles that participate in construct a search query
