@@ -41,8 +41,8 @@ angular.module('app.directives',[])
 			type:"=",
 			source:"=",
 			enumtype:"=",
-			enumkey:"=", // if enum is object array, tell me which field to be the label
-			enumval:"=", // and which field is the selected value
+			enumkey:"=", // text field
+			enumval:"=", // value field
 			opv3:"=myvalue",
 			opsource:"=actionsource",
 			opaction:"=action",
@@ -82,6 +82,12 @@ angular.module('app.directives',[])
 							});
 						}
 					}).datebox('setValue',new Date());
+					angular.element(element).find(":text").last().on('blur',function(){
+						var d=$filter('date')(new Date(this.value),datefmt);
+						scope.$apply(function(){
+							scope.opv3=d;
+						});
+					});
 				}else if(scope.type.name=='enum'){
 					// convert str array to a obj array
 					var cvt = function(data){
@@ -90,6 +96,7 @@ angular.module('app.directives',[])
 							this.push({text:el,value:el});
 						},jsonsource);
 						scope.source=jsonsource;
+						scope.enumtype="obj";
 					},
 					setdefault = function(){
 						scope.source[0]['selected']=true;
