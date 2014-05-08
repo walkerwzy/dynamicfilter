@@ -49,7 +49,7 @@ angular.module("app.controllers",[]).controller('ctrls',['$scope',function($scop
 			enumtype:'obj',
 			enumkey:'column1',
 			enumval:'id',
-			datasource:"/data.json"
+			datasource:"/data.json" 
 		},
 		{
 			fieldname:"date field",
