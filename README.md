@@ -1,7 +1,11 @@
 dynamicfilter
 =============
 
-a angular directive that can dynamic add/remove filter conditions 
+![demo](demo.gif)
+
+可以动态生成查询条件的angular组件, 比如"年龄=22, 爱好 不是 篮球"等, 数据源支持本地数组和远程数组.
+
+a angular directive that can dynamic add/remove filter conditions. 
 
 ---
 - define some modles that participate in construct a search query
